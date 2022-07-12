@@ -4,7 +4,7 @@ from tensorboardX import SummaryWriter
 from torch.optim import Adam
 
 from my_dataset import DriveDataset
-from src import UNet
+from src import LRANet
 from torchvision.transforms import transforms
 import time
 import datetime
@@ -115,7 +115,7 @@ def val(data_loader, model, criterion):
     return epoch_loss, epoch_acc
 
 def create_model(num_classes):
-    model = UNet(in_channels=3, num_classes=num_classes, base_c=32)
+    model = LRANet(in_channels=3, num_classes=num_classes, base_c=32)
     return model
 
 def create_lr_scheduler(optimizer,
