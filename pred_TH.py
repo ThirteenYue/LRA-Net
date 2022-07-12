@@ -4,7 +4,7 @@ import cv2
 from PIL import Image
 from torchvision import transforms
 import torch
-from src import UNet
+from src import LRANet
 import os
 from MLtrainer import SegmentationMetric
 import re
@@ -12,7 +12,7 @@ import re
 # load pre-trained model and weights
 def load_model():
     # device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    model = UNet(in_channels=3, num_classes=2, base_c=32).to(args.device)
+    model = LRAUnet(in_channels=3, num_classes=2, base_c=32).to(args.device)
     state_dict = torch.load(args.pre_trained, map_location='cuda')
     model.load_state_dict(state_dict)
     model.eval()
